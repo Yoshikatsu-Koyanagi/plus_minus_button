@@ -16,7 +16,7 @@
       :width = 500
       :height = 300
       :number = 20
-      @numclick="num"></mycomp3> //@numclick: ボタンが押されたら発火
+      @numclick="num"></mycomp3> //@numclick: ボタンが押されたらnum()発火
 </div>
   ````
   

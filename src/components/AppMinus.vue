@@ -9,7 +9,7 @@
 
 <script>
 export default { 
-  props: ["width","height"],
+  props: ["width","height","min","amount"],
     data() {
       return {
         triangle_width_ratio: 0.8,
@@ -88,10 +88,14 @@ export default {
 
 
     b.onmousedown = (e) => {
-          minus_color = "rgba(0,0,0,0.4)";
-          this.draw_minus_btn(minus_color);
-          this.$emit("minusclick");    
+        if (this.amount>this.min){
+            this.$emit("minusclick");
+        } 
+        else {
         }
+        minus_color = "rgba(0,0,0,0.4)";
+        this.draw_minus_btn(minus_color);
+    }
     
 
     b.onmouseup = (e) => {

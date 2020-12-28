@@ -9,7 +9,7 @@
 
 <script>
 export default { 
-  props: ["width","height"],
+  props: ["width","height","max","amount"],],
     data() {
       return {
         triangle_width_ratio: 0.8,
@@ -83,11 +83,14 @@ export default {
     this.draw_plus_btn(plus_color);    
 
     a.onmousedown = (e) => {     
-          this.$emit("plusclick");
+          if (this.amount<this.max){
+            this.$emit("plusclick");
+          } 
+          else {
+          }
           plus_color = "rgba(0,0,0,0.4)";
-          this.draw_plus_btn(plus_color);
-          
-        }
+          this.draw_plus_btn(plus_color);    
+    }
 
     a.onmouseup = (e) => {
         plus_color = this.gradient;

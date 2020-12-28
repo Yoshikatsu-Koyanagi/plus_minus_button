@@ -12,7 +12,7 @@
 
 <script>
 export default { 
-  props: ["width","height","number"],
+  props: ["width","height","amount"],
   data() {
     return {
       num_width_ratio: 0.8,
@@ -48,7 +48,7 @@ export default {
       this.context3.font = this.font;
       this.context3.fillStyle = "rgba(0,0,0,1)";
       this.context3.textAlign = "center";
-      this.context3.fillText(this.number, this.nbw*0.5, this.num_top_margin+this.num_height*0.8,this.num_width);
+      this.context3.fillText(this.amount, this.nbw*0.5, this.num_top_margin+this.num_height*0.8,this.num_width);
     
       this.context3.lineWidth = this.flame_weight;	
       this.context3.strokeStyle = "rgb(0,0,0)"; 
@@ -109,6 +109,11 @@ export default {
         num_color = this.gradient3;
         this.draw_1_btn(num_color);
     }       
+  },
+  watch: {
+    amount: function(){
+      this.draw_1_btn(this.gradient3)
+    }
   }
 }
 </script>

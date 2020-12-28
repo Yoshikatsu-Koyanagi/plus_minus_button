@@ -1,6 +1,6 @@
 {
-  "name": "numbutton",
-  "version": "1.0.40",
+  "name": "plus_minus_button",
+  "version": "1.0.0",
   "private": false,
   "description": "",
   "main": "src/library-main.js",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yoshikatsu-Koyanagi/numbutton.git"
+    "url": "git+https://github.com/Yoshikatsu-Koyanagi/plus_minus_button.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Yoshikatsu-Koyanagi/numbutton/issues"
+    "url": "https://github.com/Yoshikatsu-Koyanagi/plus_minus_button/issues"
   },
-  "homepage": "https://github.com/Yoshikatsu-Koyanagi/numbutton#readme"
+  "homepage": "https://github.com/Yoshikatsu-Koyanagi/plus_minus_button#readme"
 }

@@ -2,11 +2,8 @@
    <canvas ref="canv3" :width="width" :height="height"></canvas>
 </template>
 
-
 <style scoped>
 
- .canvas{
- }
 </style>
 
 

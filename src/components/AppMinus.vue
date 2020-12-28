@@ -3,8 +3,7 @@
 </template>
 
 <style scoped>
- .canvas{
-  }
+
 </style>
 
 <script>

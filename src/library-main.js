@@ -8,9 +8,6 @@ import component3 from './components/AppNum.vue';
 export function install(Vue) {
     if (install.installed) return;
     install.installed = true;
-    Vue.component('AppPlus', component1); //(2)コンポーネント名を変更
-    Vue.component('AppMinus', component2);
-    Vue.component('AppNum', component3);
 }
 
 // Vue.use() のためのモジュール定義を作成
@@ -31,6 +28,4 @@ if (GlobalVue) {
 }
 
 // (npm/webpack 等で) モジュールとして利用させるためコンポーネントを export する
-export default component1;
-export default component2;
-export default component3;
+export {component1, component2, component3};

@@ -4,33 +4,33 @@
 ----index.html----
 ````
 <div id="App">
-      <mycomp
+      <mycomp_plus
       :width = 500
       :height = 300
-      @plusclick="plus"></mycomp> //@plusclick: ボタンが押されたらplus()発火
-      <mycomp2
+      @plusclick="plus"></mycomp_plus> //@plusclick: ボタンが押されたらplus()発火
+      <mycomp_minus
       :width = 500
       :height = 300
-      @minusclick="minus"></mycomp2> //@minusclick: ボタンが押されたらminus()発火
-      <mycomp3
+      @minusclick="minus"></mycomp_minus> //@minusclick: ボタンが押されたらminus()発火
+      <mycomp_num
       :width = 500
       :height = 300
       :number = 20
-      @numclick="num"></mycomp3> //@numclick: ボタンが押されたらnum()発火
+      @numclick="num"></mycomp_num> //@numclick: ボタンが押されたらnum()発火
 </div>
   ````
   
   ----index.js----
   ````
 import Vue from 'vue';
-import {component1, component2, component3} from 'plus_minus_button';
+import {component_plus, component_minus, component_num} from 'plus_minus_button';
 
 new Vue({
     el: '#App',
     components: {
-        'mycomp1': component1
-        'mycomp2': component2
-        'mycomp3': component3
+        'mycomp_plus': component_plus
+        'mycomp_minus': component_minus
+        'mycomp_num': component_num
     },
     methods: {
         plus(){

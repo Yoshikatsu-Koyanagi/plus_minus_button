@@ -1,7 +1,7 @@
 // コンポーネントのインポート
-import component1 from './components/AppPlus.vue'; //(1)Vueのファイル名に変更
-import component2 from './components/AppMinus.vue';
-import component3 from './components/AppNum.vue';
+import component_plus from './components/AppPlus.vue'; //(1)Vueのファイル名に変更
+import component_minus from './components/AppMinus.vue';
+import component_num from './components/AppNum.vue';
 
 
 // Vue.use() によって実行される install 関数を定義
@@ -28,4 +28,4 @@ if (GlobalVue) {
 }
 
 // (npm/webpack 等で) モジュールとして利用させるためコンポーネントを export する
-export {component1, component2, component3};
+export {component_plus, component_minus, component_num};

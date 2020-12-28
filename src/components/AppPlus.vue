@@ -1,5 +1,5 @@
 <template>
-    <canvas id="cv1" ref="canv1" :width="width" :height="height"></canvas>
+    <canvas ref="canv1" :width="width" :height="height"></canvas>
 </template>
 
 <style scoped>

@@ -7,18 +7,18 @@
       <mycomp_plus
       :width = 500
       :height = 300
+      :max = max
       :amount = amount
       @plusclick="plus"></mycomp_plus> //@plusclick: ボタンが押されたらamountを1増やす
       <mycomp_minus
       :width = 500
       :height = 300
-      :max = max
+      :min = min
       :amount = amount
       @minusclick=amount++></mycomp_minus> //@minusclick: ボタンが押されたらamountを1減らす
       <mycomp_num
       :width = 500
       :height = 300
-      :min = min
       :amount = amount
       @numclick=amount--></mycomp_num> //@numclick: ボタンが押されたらnum()発火
 </div>

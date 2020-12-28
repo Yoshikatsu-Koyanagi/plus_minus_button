@@ -8,7 +8,7 @@
       :width = 500
       :height = 300
       :amount = amount
-      @plusclick="plus"></mycomp_plus> //@plusclick: ボタンが押されたらamountを1減らす
+      @plusclick="plus"></mycomp_plus> //@plusclick: ボタンが押されたらamountを1増やす
       <mycomp_minus
       :width = 500
       :height = 300

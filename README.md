@@ -43,7 +43,7 @@ new Vue({
     },
     methods: {
         num(){
-            console.log("this.amount"); //コンソールにamountを表示
+            console.log(this.amount); //コンソールにamountを表示
         }
     }
 })

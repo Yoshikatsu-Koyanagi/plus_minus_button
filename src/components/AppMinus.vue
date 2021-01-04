@@ -22,28 +22,28 @@ export default {
   methods: {
     draw_minus_btn(minus_color){
       //-ボタンの枠
-      this.context2.globalCompositeOperation = "destination-out";
-      this.context2.beginPath();
-      this.context2.moveTo(this.tbw*0.5,this.triangle_top_margin+this.triangle_height); 
-      this.context2.lineTo(this.triangle_side_margin,this.triangle_top_margin); 
-      this.context2.lineTo(this.triangle_side_margin+this.triangle_width,this.triangle_top_margin);
-      this.context2.closePath();	
-      this.context2.fillStyle = "rgba(0,0,0,1)";
-      this.context2.fill();
+      this.context.globalCompositeOperation = "destination-out";
+      this.context.beginPath();
+      this.context.moveTo(this.tbw*0.5,this.triangle_top_margin+this.triangle_height); 
+      this.context.lineTo(this.triangle_side_margin,this.triangle_top_margin); 
+      this.context.lineTo(this.triangle_side_margin+this.triangle_width,this.triangle_top_margin);
+      this.context.closePath();	
+      this.context.fillStyle = "rgba(0,0,0,1)";
+      this.context.fill();
 
-      this.context2.globalCompositeOperation = "source-over";
-      this.context2.lineWidth = this.flame_weight;
-      this.context2.strokeStyle = "rgb(0,0,0)"; 
-      this.context2.stroke();
+      this.context.globalCompositeOperation = "source-over";
+      this.context.lineWidth = this.flame_weight;
+      this.context.strokeStyle = "rgb(0,0,0)"; 
+      this.context.stroke();
       
-      this.context2.fillStyle = minus_color;
-      this.context2.fill();
+      this.context.fillStyle = minus_color;
+      this.context.fill();
    
       //-ボタンの"-"
-      this.context2.strokeStyle = "rgb(0,0,0)"; 
-      this.context2.stroke();
-      this.context2.fillStyle = "rgba(0,0,0,1)";
-      this.context2.fillRect(this.tbw*0.5-this.line_width*0.5,this.triangle_top_margin+this.triangle_height-this.triangle_bar_height,this.line_width,this.line_weight);
+      this.context.strokeStyle = "rgb(0,0,0)"; 
+      this.context.stroke();
+      this.context.fillStyle = "rgba(0,0,0,1)";
+      this.context.fillRect(this.tbw*0.5-this.line_width*0.5,this.triangle_top_margin+this.triangle_height-this.triangle_bar_height,this.line_width,this.line_weight);
   
     },
   
@@ -66,20 +66,20 @@ export default {
 
 
     let b = this.$refs.canv;
-    this.context2 = b.getContext('2d');
+    this.context = b.getContext('2d');
   
 
 
-    this.gradient_b = this.context2.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
+    this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
     this.gradient_b.addColorStop(0.0 , this.bg_c_2);
     this.gradient_b.addColorStop(1.0 , this.bg_c_3);
-    this.context2.fillStyle = this.gradient_b;
-    this.context2.fillRect(0,0,this.tbw,this.tbh);
+    this.context.fillStyle = this.gradient_b;
+    this.context.fillRect(0,0,this.tbw,this.tbh);
 
     
     //-ボタンを作成
     let minus_color; //-ボタンの色
-    this.gradient = this.context2.createLinearGradient(this.tbw*0.5,this.triangle_top_margin,this.tbw*0.5,this.triangle_top_margin+this.triangle_height);
+    this.gradient = this.context.createLinearGradient(this.tbw*0.5,this.triangle_top_margin,this.tbw*0.5,this.triangle_top_margin+this.triangle_height);
     this.gradient.addColorStop(0.0, 'rgba(0,0,0,0.05)');
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.35)');
     minus_color = this.gradient 

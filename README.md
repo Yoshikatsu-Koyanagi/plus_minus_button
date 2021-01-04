@@ -32,9 +32,12 @@ import {component_plus, component_minus, component_num} from 'plus_minus_button'
 new Vue({
     el: '#App',
     data: {
-         max: 99, //最大値
-         min: 0, //最小値
-         amount: 20, //初期値
+         max: 99,                               //最大値
+         min: 0,                                //最小値
+         amount: 20,                            //初期値
+         bg_c_1: "rgba(100,99,255,0.05)",       //背景のグラデーション上部
+         bg_c_2: "rgba(100,99,255,0.125)",      //背景のグラデーション中部
+         bg_c_3: "rgba(100,99,255,0.25)",       //背景のグラデーション下部
     },
     components: {
         'mycomp_plus': component_plus,

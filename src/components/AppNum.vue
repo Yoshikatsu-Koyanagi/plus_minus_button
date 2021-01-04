@@ -12,8 +12,8 @@ export default {
   props: ["width","height","amount","bg_c_1","bg_c_2","bg_c_3"],
   data() {
     return {
-      num_width_ratio: 0.8,
-      num_height_ratio: 0.5,
+      num_width_ratio: 0.9,
+      num_height_ratio: 0.7,
       flame_weight_ratio: 0.01, //キャンバスの横幅に対するボタンの枠の太さの割合
       font_ratio: 0.8, //数字ボタンの高さに対するフォントサイズの割合
       font_name: "meirio", //フォントの書体

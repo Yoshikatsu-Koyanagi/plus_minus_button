@@ -11,8 +11,8 @@ export default {
   props: ["width","height","max","amount","bg_c_1","bg_c_2"],
     data() {
       return {
-        triangle_width_ratio: 0.8,
-        triangle_height_ratio: 0.6,
+        triangle_width_ratio: 0.9,
+        triangle_height_ratio: 0.7,
         triangle_bar_height_ratio: 0.6,
         flame_weight_ratio: 0.01, //キャンバスの横幅に対するボタンの枠の太さの割合
         line_ratio: 0.5, //三角ボタンの高さに対する＋,-の線の長さの割合

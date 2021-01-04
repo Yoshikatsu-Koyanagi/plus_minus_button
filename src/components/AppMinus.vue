@@ -1,5 +1,5 @@
 <template>
-    <canvas ref="canv2" :width="width" :height="height"></canvas>
+    <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
 <style scoped>
@@ -65,24 +65,24 @@ export default {
 
 
 
-    let b = this.$refs.canv2;
+    let b = this.$refs.canv;
     this.context2 = b.getContext('2d');
   
 
 
-    this.gradient2_b = this.context2.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
-    this.gradient2_b.addColorStop(0.0 , this.bg_c_2);
-    this.gradient2_b.addColorStop(1.0 , this.bg_c_3);
-    this.context2.fillStyle = this.gradient2_b;
+    this.gradient_b = this.context2.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
+    this.gradient_b.addColorStop(0.0 , this.bg_c_2);
+    this.gradient_b.addColorStop(1.0 , this.bg_c_3);
+    this.context2.fillStyle = this.gradient_b;
     this.context2.fillRect(0,0,this.tbw,this.tbh);
 
     
     //-ボタンを作成
     let minus_color; //-ボタンの色
-    this.gradient2 = this.context2.createLinearGradient(this.tbw*0.5,this.triangle_top_margin,this.tbw*0.5,this.triangle_top_margin+this.triangle_height);
-    this.gradient2.addColorStop(0.0, 'rgba(0,0,0,0.05)');
-    this.gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.35)');
-    minus_color = this.gradient2 
+    this.gradient = this.context2.createLinearGradient(this.tbw*0.5,this.triangle_top_margin,this.tbw*0.5,this.triangle_top_margin+this.triangle_height);
+    this.gradient.addColorStop(0.0, 'rgba(0,0,0,0.05)');
+    this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.35)');
+    minus_color = this.gradient 
     this.draw_minus_btn(minus_color);
 
 
@@ -98,13 +98,13 @@ export default {
     
 
     b.onmouseup = (e) => {
-        minus_color = this.gradient2;
+        minus_color = this.gradient;
         this.draw_minus_btn(minus_color); 
     }
 
    
     b.onmouseout = (e) => {
-        minus_color = this.gradient2;
+        minus_color = this.gradient;
         this.draw_minus_btn(minus_color);
     } 
     

@@ -1,5 +1,5 @@
 <template>
-   <canvas ref="canv3" :width="width" :height="height"></canvas>
+   <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
 <style scoped>
@@ -63,39 +63,39 @@ export default {
     this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
     this.num_top_margin = this.nbh*(1-this.num_height_ratio)*0.5;
    
-    let c = this.$refs.canv3;
+    let c = this.$refs.canv;
     this.context3 = c.getContext('2d');
 
-    this.gradient3_b = this.context3.createLinearGradient(this.nbw*0.5, 0, this.nbw*0.5, this.nbh);
-    this.gradient3_b.addColorStop(0.0 , this.bg_c_1);
-    this.gradient3_b.addColorStop(0.5 , this.bg_c_2);
-    this.gradient3_b.addColorStop(1.0 , this.bg_c_3);
-    this.context3.fillStyle = this.gradient3_b;
+    this.gradient_b = this.context3.createLinearGradient(this.nbw*0.5, 0, this.nbw*0.5, this.nbh);
+    this.gradient_b.addColorStop(0.0 , this.bg_c_1);
+    this.gradient_b.addColorStop(0.5 , this.bg_c_2);
+    this.gradient_b.addColorStop(1.0 , this.bg_c_3);
+    this.context3.fillStyle = this.gradient_b;
     this.context3.fillRect(0,0,this.nbw,this.nbh);  
     
     //数字ボタンを作成
     this.font_size = this.num_height*this.font_ratio; //フォントサイズ
     this.font = `${this.font_size}px ${this.font_name}`; //フォントサイズと書体    
     let num_color; //数字ボタンの色
-    this.gradient3 = this.context3.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
-    this.gradient3.addColorStop(0.0 , 'rgba(0,0,0,0.35)');
-    this.gradient3.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
-    num_color = this.gradient3;
+    this.gradient = this.context3.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+    this.gradient.addColorStop(0.0 , 'rgba(0,0,0,0.35)');
+    this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
+    num_color = this.gradient;
     this.draw_1_btn(num_color);
     let num_down = false;
 
     c.onmousedown = (e) => {
-          let gradient6 = this.context3.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
-          gradient6.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-          gradient6.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-          num_color = gradient6;
+          let gradient2 = this.context3.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+          num_color = gradient2;
           this.draw_1_btn(num_color);
           this.$emit("numclick");
           return num_down = true;
     }
   
     c.onmouseup = (e) => {
-        num_color = this.gradient3;
+        num_color = this.gradient;
         this.draw_1_btn(num_color);  
     } 
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
@@ -103,13 +103,13 @@ export default {
     }
   
     c.onmouseout = (e) => {
-        num_color = this.gradient3;
+        num_color = this.gradient;
         this.draw_1_btn(num_color);
     }       
   },
   watch: {
     amount: function(){
-      this.draw_1_btn(this.gradient3)
+      this.draw_1_btn(this.gradient)
     }
   }
 }

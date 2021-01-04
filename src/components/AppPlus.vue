@@ -1,5 +1,5 @@
 <template>
-    <canvas ref="canv1" :width="width" :height="height"></canvas>
+    <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
 <style scoped>
@@ -62,14 +62,14 @@ export default {
     this.line_width = this.triangle_height*this.line_ratio; //＋,-の線の長さ
     this.line_weight = this.flame_weight*this.line_weight_ratio; //＋,-の線の太さ
 
-    let a = this.$refs.canv1;
+    let a = this.$refs.canv;
     this.context = a.getContext('2d');
 
     
-    this.gradient1_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
-    this.gradient1_b.addColorStop(0.0 , this.bg_c_1);
-    this.gradient1_b.addColorStop(1.0 , this.bg_c_2);
-    this.context.fillStyle = this.gradient1_b;
+    this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
+    this.gradient_b.addColorStop(0.0 , this.bg_c_1);
+    this.gradient_b.addColorStop(1.0 , this.bg_c_2);
+    this.context.fillStyle = this.gradient_b;
     this.context.fillRect(0,0,this.tbw,this.tbh);
 
    

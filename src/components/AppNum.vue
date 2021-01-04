@@ -83,7 +83,6 @@ export default {
     num_color = this.gradient;
     this.draw_1_btn(num_color);
     let num_down = false;
-    let num_up = false;
 
     c.onmousedown = (e) => {
           let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
@@ -107,23 +106,31 @@ export default {
     c.onmouseup = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color); 
-        return num_up = true; 
+        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
+        if (num_down == true) {
+        this.$emit("numclick");
+        return num_down = false;
+    }
+
     } 
 
     c.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);  
-        return up = true;
+        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
+        if (num_down == true) {
+        this.$emit("numclick");
+        return num_down = false;
     }
 
-        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-    if (num_down == true && num_up == true) {
-        this.$emit("numclick");
     }
+
+    
   
     c.onmouseout = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);
+        return num_down = false;
     }       
   },
   watch: {

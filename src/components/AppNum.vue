@@ -90,7 +90,6 @@ export default {
           gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
           num_color = gradient2;
           this.draw_1_btn(num_color);
-          this.$emit("numclick");
           return num_down = true;
     }
   
@@ -121,12 +120,10 @@ export default {
         if (num_down == true) {
         this.$emit("numclick");
         return num_down = false;
-    }
-
+        }
     }
 
     
-  
     c.onmouseout = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);

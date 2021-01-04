@@ -8,7 +8,7 @@
 
 <script>
 export default { 
-  props: ["width","height","max","amount"],
+  props: ["width","height","max","amount","bg_c_1","bg_c_2"],
     data() {
       return {
         triangle_width_ratio: 0.8,
@@ -67,8 +67,8 @@ export default {
 
     
     this.gradient1_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
-    this.gradient1_b.addColorStop(0.0 , 'rgba(0,50,255,0.05)');
-    this.gradient1_b.addColorStop(1.0 , 'rgba(0,50,255,0.125)');
+    this.gradient1_b.addColorStop(0.0 , this.bg_c_1);
+    this.gradient1_b.addColorStop(1.0 , this.bg_c_2);
     this.context.fillStyle = this.gradient1_b;
     this.context.fillRect(0,0,this.tbw,this.tbh);
 

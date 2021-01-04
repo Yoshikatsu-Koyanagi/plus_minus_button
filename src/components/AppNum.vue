@@ -9,7 +9,7 @@
 
 <script>
 export default { 
-  props: ["width","height","amount"],
+  props: ["width","height","amount","bg_c_1","bg_c_2","bg_c_3"],
   data() {
     return {
       num_width_ratio: 0.8,
@@ -67,9 +67,9 @@ export default {
     this.context3 = c.getContext('2d');
 
     this.gradient3_b = this.context3.createLinearGradient(this.nbw*0.5, 0, this.nbw*0.5, this.nbh);
-    this.gradient3_b.addColorStop(0.0 , 'rgba(0,50,255,0.05)');
-    this.gradient3_b.addColorStop(0.5 , 'rgba(0,50,255,0.125)');
-    this.gradient3_b.addColorStop(1.0 , 'rgba(0,50,255,0.25)');
+    this.gradient3_b.addColorStop(0.0 , this.bg_c_1);
+    this.gradient3_b.addColorStop(0.5 , this.bg_c_2);
+    this.gradient3_b.addColorStop(1.0 , this.bg_c_3);
     this.context3.fillStyle = this.gradient3_b;
     this.context3.fillRect(0,0,this.nbw,this.nbh);  
     

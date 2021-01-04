@@ -9,17 +9,24 @@
       :height = 300
       :max = max
       :amount = amount
+      :bg_c_1 = bg_c_1
+      :bg_c_2 = bg_c_2
       @plusclick=amount++></mycomp_plus>        //@plusclick: ボタンが押されたらamountを1増やす
       <mycomp_minus
       :width = 500
       :height = 300
       :min = min
       :amount = amount
+      :bg_c_2 = bg_c_2
+      :bg_c_3 = bg_c_3
       @minusclick=amount--></mycomp_minus>      //@minusclick: ボタンが押されたらamountを1減らす
       <mycomp_num
       :width = 500
       :height = 300
       :amount = amount
+      :bg_c_1 = bg_c_1
+      :bg_c_2 = bg_c_2
+      :bg_c_3 = bg_c_3
       @numclick="num"></mycomp_num>             //@numclick: ボタンが押されたらnum()発火
 </div>
   ````
@@ -43,7 +50,7 @@ new Vue({
         'mycomp_plus': component_plus,
         'mycomp_minus': component_minus,
         'mycomp_num': component_num,
-    },
+    },　
     methods: {
         num(){
             console.log(this.amount);           //コンソールにamountを表示

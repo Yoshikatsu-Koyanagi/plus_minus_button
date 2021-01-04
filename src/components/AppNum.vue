@@ -94,10 +94,26 @@ export default {
           return num_down = true;
     }
   
+    c.ontouchstart = (e) => {
+          let gradient2 = this.context3.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+          num_color = gradient2;
+          this.draw_1_btn(num_color);
+          this.$emit("numclick");
+          return num_down = true;
+    }
+  
     c.onmouseup = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);  
     } 
+
+    c.ontouchend = (e) => {
+        num_color = this.gradient;
+        this.draw_1_btn(num_color);  
+    }
+    
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
     if (num_down == true) {
     }

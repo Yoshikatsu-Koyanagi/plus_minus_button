@@ -53,11 +53,10 @@ export default {
     },
   },
   mounted() {
-    this.flame_weight = this.width*this.flame_weight_ratio //ボタンの枠の太さ
-
     this.nbw = this.width;
     this.nbh = this.height;
-    
+
+    this.flame_weight = this.nbw*this.flame_weight_ratio //ボタンの枠の太さ
     this.num_width = this.nbw*this.num_width_ratio;
     this.num_height = this.nbh*this.num_height_ratio;
     this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
@@ -83,52 +82,68 @@ export default {
     num_color = this.gradient;
     this.draw_1_btn(num_color);
     let num_down = false;
+    let touch = false;
 
-    c.onmousedown = (e) => {
-          let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
-          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-          num_color = gradient2;
-          this.draw_1_btn(num_color);
-          return num_down = true;
-    }
-  
-    c.ontouchstart = (e) => {
-          let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
-          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-          num_color = gradient2;
-          this.draw_1_btn(num_color);
-          return num_down = true;
-    }
-  
-    c.onmouseup = (e) => {
-        num_color = this.gradient;
-        this.draw_1_btn(num_color); 
-        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-        if (num_down == true) {
-        this.$emit("numclick");
-        return num_down = false;
-    }
+    
+    //タッチされたとき（スマホ）
+    c.addEventListener('touchstart', () => { 
+        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+        gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+        gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+        num_color = gradient2;
+        this.draw_1_btn(num_color);
+        num_down = true;
+        touch = true;
+    },　{
+      passive: true
+    });
 
-    } 
-
+    //タッチが離れたとき（スマホ）
     c.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);  
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
         if (num_down == true) {
         this.$emit("numclick");
-        return num_down = false;
+        num_down = false;
+        touch = true;
         }
     }
 
     
-    c.onmouseout = (e) => {
-        num_color = this.gradient;
-        this.draw_1_btn(num_color);
-        return num_down = false;
-    }       
+      c.onmousedown = (e) => {
+        if (touch == false) {
+          let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+          num_color = gradient2;
+          this.draw_1_btn(num_color);
+          num_down = true;
+        }
+      }
+
+      //クリックが離されたとき
+      c.onmouseup = (e) => {
+        if (touch == false) {
+          num_color = this.gradient;
+          this.draw_1_btn(num_color); 
+          //数字ボタンが押されて且つ数字ボタン上で離されたとき        
+          if (num_down == true) {
+            this.$emit("numclick");
+            num_down = false;
+          }
+        }
+      } 
+
+      //マウスがキャンバス外に出た時
+      c.onmouseout = (e) => {
+        if (touch == false) {
+          num_color = this.gradient;
+          this.draw_1_btn(num_color);
+          num_down = false;
+        }
+      }      
+    
   },
   watch: {
     amount: function(){

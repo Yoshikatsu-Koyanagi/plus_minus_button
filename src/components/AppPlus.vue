@@ -49,11 +49,10 @@ export default {
 
   },
   mounted() {
-    this.flame_weight = this.width*this.flame_weight_ratio //ボタンの枠の太さ
-
     this.tbw = this.width;
     this.tbh = this.height;
-    
+
+    this.flame_weight = this.tbw*this.flame_weight_ratio //ボタンの枠の太さ
     this.triangle_width = this.triangle_width_ratio*this.tbw;
     this.triangle_height = this.tbh*this.triangle_height_ratio;
     this.triangle_side_margin = this.tbw*(1-this.triangle_width_ratio)*0.5;
@@ -64,7 +63,6 @@ export default {
 
     let a = this.$refs.canv;
     this.context = a.getContext('2d');
-
     
     this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
     this.gradient_b.addColorStop(0.0 , this.bg_c_1);
@@ -79,29 +77,55 @@ export default {
     this.gradient.addColorStop(0.0 , 'rgba(0,0,0,0.35)');
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
     plus_color = this.gradient;
-    this.draw_plus_btn(plus_color);    
+    this.draw_plus_btn(plus_color); 
+    let touch = false;   
 
-    a.onmousedown = (e) => {     
-          if (this.amount<this.max){
-            this.$emit("plusclick");
-          } 
-          else {
-          }
-          plus_color = "rgba(0,0,0,0.4)";
-          this.draw_plus_btn(plus_color);    
+    
+    //タッチされたとき（スマホ）
+    a.addEventListener('touchstart', () => { 
+        if (this.amount<this.max){
+          this.$emit("plusclick");
+        } 
+        plus_color = "rgba(0,0,0,0.4)";
+        this.draw_plus_btn(plus_color);
+        touch = true;
+    }, {
+      passive: true
+    });
+
+    //タッチが離れたとき（スマホ）
+    a.ontouchend = (e) => {
+        plus_color = this.gradient;
+        this.draw_plus_btn(plus_color);
+        touch = true;
     }
 
+    //クリックが押されたとき
+    a.onmousedown = (e) => {
+      if (touch == false) {
+        if (this.amount<this.max){
+          this.$emit("plusclick");
+        } 
+        plus_color = "rgba(0,0,0,0.4)";
+        this.draw_plus_btn(plus_color); 
+      }  
+    }
+
+    //クリックが離されたとき
     a.onmouseup = (e) => {
+      if (touch == false) {
         plus_color = this.gradient;
         this.draw_plus_btn(plus_color);
+      }
     }
 
+    //マウスがキャンバス外に出た時
     a.onmouseout = (e) => {
+      if (touch == false) {
         plus_color = this.gradient;
         this.draw_plus_btn(plus_color);
-    }        
-
-         
+      }
+    }                 
   }
 }
 </script>

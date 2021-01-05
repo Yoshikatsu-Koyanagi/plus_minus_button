@@ -49,12 +49,10 @@ export default {
   
   },
   mounted() {
-    this.flame_weight = this.width*this.flame_weight_ratio //ボタンの枠の太さ
-
-
     this.tbw = this.width;
     this.tbh = this.height;
-    
+
+    this.flame_weight = this.tbw*this.flame_weight_ratio //ボタンの枠の太さ
     this.triangle_width = this.triangle_width_ratio*this.tbw;
     this.triangle_height = this.tbh*this.triangle_height_ratio;
     this.triangle_side_margin = this.tbw*(1-this.triangle_width_ratio)*0.5;
@@ -63,12 +61,8 @@ export default {
     this.line_width = this.triangle_height*this.line_ratio; //＋,-の線の長さ
     this.line_weight = this.flame_weight*this.line_weight_ratio; //＋,-の線の太さ
 
-
-
     let b = this.$refs.canv;
     this.context = b.getContext('2d');
-  
-
 
     this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
     this.gradient_b.addColorStop(0.0 , this.bg_c_2);
@@ -84,30 +78,54 @@ export default {
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.35)');
     minus_color = this.gradient 
     this.draw_minus_btn(minus_color);
+    let touch = false;    
 
 
-    b.onmousedown = (e) => {
+    //タッチされたとき（スマホ）
+    b.addEventListener('touchstart', () => { 
         if (this.amount>this.min){
-            this.$emit("minusclick");
+          this.$emit("minusclick");
         } 
-        else {
-        }
         minus_color = "rgba(0,0,0,0.4)";
         this.draw_minus_btn(minus_color);
-    }
-    
+        touch = true;
+    }, {
+      passive: true
+    });
 
-    b.onmouseup = (e) => {
-        minus_color = this.gradient;
-        this.draw_minus_btn(minus_color); 
-    }
-
-   
-    b.onmouseout = (e) => {
+    //タッチが離れたとき（スマホ）
+    b.ontouchend = (e) => {
         minus_color = this.gradient;
         this.draw_minus_btn(minus_color);
+        touch = true;
+    }
+
+    //クリックが押されたとき
+    b.onmousedown = (e) => {
+      if (touch == false) {
+        if (this.amount>this.min){
+          this.$emit("minusclick");
+        } 
+        minus_color = "rgba(0,0,0,0.4)";
+        this.draw_minus_btn(minus_color);
+      }
+    }
+
+    //クリックが離されたとき
+    b.onmouseup = (e) => {
+      if (touch == false) {
+        minus_color = this.gradient;
+        this.draw_minus_btn(minus_color); 
+      }
+    }
+
+    //マウスがキャンバス外に出た時
+    b.onmouseout = (e) => {
+      if (touch == false) {
+        minus_color = this.gradient;
+        this.draw_minus_btn(minus_color);
+      }
     } 
-    
   }
 }
 </script>

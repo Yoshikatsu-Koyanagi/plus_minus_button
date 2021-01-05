@@ -83,7 +83,7 @@ export default {
 
     //タッチされたとき（スマホ）
     b.addEventListener('touchstart', () => { 
-        if (this.amount>this.min){
+        if ( this.min===undefined ? true : this.amount>this.min ){
           this.$emit("minusclick");
         } 
         minus_color = "rgba(0,0,0,0.4)";
@@ -103,7 +103,7 @@ export default {
     //クリックが押されたとき
     b.onmousedown = (e) => {
       if (touch == false) {
-        if (this.amount>this.min){
+        if ( this.min===undefined ? true : this.amount>this.min ){
           this.$emit("minusclick");
         } 
         minus_color = "rgba(0,0,0,0.4)";

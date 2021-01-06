@@ -67,8 +67,14 @@ export default {
     if (this.bg_c_1 === undefined){
       this.bg1 = "rgba(255,99,255,0.05)";
     } 
+    else {
+      this.bg1 = this.bg_c_1;
+    }
     if (this.bg_c_2 === undefined){
       this.bg2 = "rgba(255,99,255,0.125)";
+    }
+    else {
+      this.bg2 = this.bg_c_2;
     }
     
     this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);

@@ -62,13 +62,23 @@ export default {
     this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
     this.num_top_margin = this.nbh*(1-this.num_height_ratio)*0.5;
    
-    let c = this.$refs.canv;
-    this.context = c.getContext('2d');
+    let canvas = this.$refs.canv;
+    this.context = canvas.getContext('2d');
+
+    if (this.bg_c_1 === undefined){
+      this.bg1 = "rgba(255,99,255,0.05)";
+    } 
+    if (this.bg_c_2 === undefined){
+      this.bg2 = "rgba(255,99,255,0.125)";
+    }
+    if (this.bg_c_3 === undefined){
+      this.bg3 = "rgba(255,99,255,0.25)";
+    }
 
     this.gradient_b = this.context.createLinearGradient(this.nbw*0.5, 0, this.nbw*0.5, this.nbh);
-    this.gradient_b.addColorStop(0.0 , this.bg_c_1);
-    this.gradient_b.addColorStop(0.5 , this.bg_c_2);
-    this.gradient_b.addColorStop(1.0 , this.bg_c_3);
+    this.gradient_b.addColorStop(0.0 , this.bg1);
+    this.gradient_b.addColorStop(0.5 , this.bg2);
+    this.gradient_b.addColorStop(1.0 , this.bg3);
     this.context.fillStyle = this.gradient_b;
     this.context.fillRect(0,0,this.nbw,this.nbh);  
     
@@ -86,7 +96,7 @@ export default {
 
     
     //タッチされたとき（スマホ）
-    c.addEventListener('touchstart', () => { 
+    canvas.addEventListener('touchstart', () => { 
         let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
         gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
         gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
@@ -99,7 +109,7 @@ export default {
     });
 
     //タッチが離れたとき（スマホ）
-    c.ontouchend = (e) => {
+    canvas.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_1_btn(num_color);  
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
@@ -111,7 +121,7 @@ export default {
     }
 
     
-      c.onmousedown = (e) => {
+      canvas.onmousedown = (e) => {
         if (touch == false) {
           let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
           gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
@@ -123,7 +133,7 @@ export default {
       }
 
       //クリックが離されたとき
-      c.onmouseup = (e) => {
+      canvas.onmouseup = (e) => {
         if (touch == false) {
           num_color = this.gradient;
           this.draw_1_btn(num_color); 
@@ -136,7 +146,7 @@ export default {
       } 
 
       //マウスがキャンバス外に出た時
-      c.onmouseout = (e) => {
+      canvas.onmouseout = (e) => {
         if (touch == false) {
           num_color = this.gradient;
           this.draw_1_btn(num_color);

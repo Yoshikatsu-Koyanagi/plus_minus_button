@@ -61,12 +61,19 @@ export default {
     this.line_width = this.triangle_height*this.line_ratio; //＋,-の線の長さ
     this.line_weight = this.flame_weight*this.line_weight_ratio; //＋,-の線の太さ
 
-    let a = this.$refs.canv;
-    this.context = a.getContext('2d');
+    let canvas = this.$refs.canv;
+    this.context = canvas.getContext('2d');
+
+    if (this.bg_c_1 === undefined){
+      this.bg1 = "rgba(255,99,255,0.05)";
+    } 
+    if (this.bg_c_2 === undefined){
+      this.bg2 = "rgba(255,99,255,0.125)";
+    }
     
     this.gradient_b = this.context.createLinearGradient(this.tbw*0.5, 0, this.tbw*0.5, this.tbh);
-    this.gradient_b.addColorStop(0.0 , this.bg_c_1);
-    this.gradient_b.addColorStop(1.0 , this.bg_c_2);
+    this.gradient_b.addColorStop(0.0 , this.bg1);
+    this.gradient_b.addColorStop(1.0 , this.bg2);
     this.context.fillStyle = this.gradient_b;
     this.context.fillRect(0,0,this.tbw,this.tbh);
 
@@ -82,7 +89,7 @@ export default {
 
     
     //タッチされたとき（スマホ）
-    a.addEventListener('touchstart', () => { 
+    canvas.addEventListener('touchstart', () => { 
         if (this.max === undefined ? true : this.amount<this.max){
           this.$emit("plusclick");
         } 
@@ -94,14 +101,14 @@ export default {
     });
 
     //タッチが離れたとき（スマホ）
-    a.ontouchend = (e) => {
+    canvas.ontouchend = (e) => {
         plus_color = this.gradient;
         this.draw_plus_btn(plus_color);
         touch = true;
     }
 
     //クリックが押されたとき
-    a.onmousedown = (e) => {
+    canvas.onmousedown = (e) => {
       if (touch == false) {
         if (this.max === undefined ? true : this.amount<this.max){
           this.$emit("plusclick");
@@ -112,7 +119,7 @@ export default {
     }
 
     //クリックが離されたとき
-    a.onmouseup = (e) => {
+    canvas.onmouseup = (e) => {
       if (touch == false) {
         plus_color = this.gradient;
         this.draw_plus_btn(plus_color);
@@ -120,7 +127,7 @@ export default {
     }
 
     //マウスがキャンバス外に出た時
-    a.onmouseout = (e) => {
+    canvas.onmouseout = (e) => {
       if (touch == false) {
         plus_color = this.gradient;
         this.draw_plus_btn(plus_color);

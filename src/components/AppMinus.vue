@@ -65,7 +65,7 @@ export default {
     this.context = canvas.getContext('2d');
 
     if (this.bg_c_2 === undefined){
-      this.bg2 = "rgba(255,99,255,0.125)",;
+      this.bg2 = "rgba(255,99,255,0.125)";
     } 
     if (this.bg_c_3 === undefined){
       this.bg3 = "rgba(255,99,255,0.25)";

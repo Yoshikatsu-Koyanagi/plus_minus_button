@@ -2,10 +2,6 @@
     <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
-<style scoped>
-  canvas{
-    background-color: white;
-  }
 </style>
 
 <script>

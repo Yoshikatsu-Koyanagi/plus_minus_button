@@ -3,7 +3,9 @@
 </template>
 
 <style scoped>
-
+  canvas{
+    background-color: white;
+  }
 </style>
 
 <script>

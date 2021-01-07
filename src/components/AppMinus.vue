@@ -27,7 +27,9 @@ export default {
       this.context.moveTo(this.width*0.5,this.height-this.flame_weight); 
       this.context.lineTo(this.flame_weight,this.flame_weight); 
       this.context.lineTo(this.width-this.flame_weight,this.flame_weight);
-      this.context.closePath();	
+      this.context.closePath();
+      this.context.fillStyle = "rgb(255,255,255)";
+      this.context.fill();	
       this.context.fillStyle = minus_color;
       this.context.fill();
 

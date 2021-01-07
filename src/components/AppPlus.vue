@@ -2,12 +2,6 @@
     <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
-<style scoped>
-  canvas{
-    background-color: white;
-  }
-</style>
-
 <script>
 export default { 
   props: ["width","height","max","amount"],
@@ -28,6 +22,8 @@ export default {
       this.context.lineTo(this.flame_weight,this.height-this.flame_weight); 
       this.context.lineTo(this.width-this.flame_weight,this.height-this.flame_weight);
       this.context.closePath();	
+      this.context.fillStyle = "rgb(255,255,255)";
+      this.context.fill();
       this.context.fillStyle = plus_color;
       this.context.fill();
       

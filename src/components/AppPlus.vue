@@ -11,13 +11,13 @@
 <script>
 export default { 
   props: ["width","height","max","amount"],
-    data() {
-      return {
-        triangle_bar_height_ratio: 0.6,
-        flame_weight_ratio: 0.03, //キャンバスの横幅と高さの平均に対するボタンの枠の太さの割合
-        line_ratio: 0.5, //三角ボタンの高さに対する＋,-の線の長さの割合
-        line_weight_ratio: 0.8, //ボタンの枠の太さに対する＋,-の線の太さ
-      }
+  data() {
+    return {
+      triangle_bar_height_ratio: 0.6,
+      flame_weight_ratio: 0.03, //キャンバスの横幅と高さの平均に対するボタンの枠の太さの割合
+      line_ratio: 0.5, //三角ボタンの高さに対する＋の線の長さの割合
+      line_weight_ratio: 0.8, //ボタンの枠の太さに対する＋,-の線の太さ
+    }
   },
   methods: {
     draw_plus_btn(plus_color){
@@ -43,7 +43,6 @@ export default {
       //＋ボタンの"＋"の縦棒
       this.context.fillRect(this.width*0.5-this.line_weight*0.5,this.triangle_bar_height+this.line_weight*0.5-this.line_width*0.5,this.line_weight,this.line_width);
     },
-
   },
   mounted() {
     this.flame_weight = (this.width+this.height)*0.5*this.flame_weight_ratio //ボタンの枠の太さ

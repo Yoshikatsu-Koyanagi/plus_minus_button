@@ -44,7 +44,7 @@ export default {
   
   },
   mounted() {
-    this.flame_weight = this.width*this.flame_weight_ratio //ボタンの枠の太さ;
+    this.flame_weight = (this.width+this.height)*0.5*this.flame_weight_ratio //ボタンの枠の太さ;
     this.triangle_bar_height = this.height*this.triangle_bar_height_ratio;
     this.line_width = this.height*this.line_ratio; //＋,-の線の長さ
     this.line_weight = this.flame_weight*this.line_weight_ratio; //＋,-の線の太さ

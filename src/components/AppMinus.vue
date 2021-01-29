@@ -55,7 +55,7 @@ export default {
     let minus_color; //-ボタンの色
     this.gradient = this.context.createLinearGradient(this.width*0.5,this.flame_weight,this.width*0.5,this.height-this.flame_weight);
     this.gradient.addColorStop(0.0, 'rgba(0,0,0,0.05)');
-    this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.35)');
+    this.gradient.addColorStop(0.8, 'rgba(0,0,0,0.35)');
     minus_color = this.gradient 
     this.draw_minus_btn(minus_color);
     let touch = false;    

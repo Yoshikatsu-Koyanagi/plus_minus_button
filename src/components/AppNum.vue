@@ -49,14 +49,13 @@ export default {
     num_color = this.gradient;
     this.draw_num_btn(num_color);
 
-    let num_down = false;
     let touch = false;
     
     //タッチされたとき（スマホ）
     canvas.addEventListener('touchstart', () => { 
         num_color = this.gradient_pushed;
         this.draw_num_btn(num_color);
-        num_down = true;
+        this.$emit("numclick");
         touch = true;
     },　{
       passive: true
@@ -66,19 +65,14 @@ export default {
     canvas.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_num_btn(num_color);  
-        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-        if (num_down == true) {
-        this.$emit("numclick");
-        num_down = false;
-        touch = true;
-        }
     }
     
+    //クリックが押されたとき
     canvas.onmousedown = (e) => {
       if (touch == false) {
         num_color = this.gradient_pushed;
         this.draw_num_btn(num_color);
-        num_down = true;
+        this.$emit("numclick");
       }
     }
 
@@ -88,19 +82,14 @@ export default {
         num_color = this.gradient;
         this.draw_num_btn(num_color); 
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-        if (num_down == true) {
-          this.$emit("numclick");
-          num_down = false;
-          }
-        }
       } 
-
+    }
+    
     //マウスがキャンバス外に出た時
     canvas.onmouseout = (e) => {
       if (touch == false) {
         num_color = this.gradient;
         this.draw_num_btn(num_color);
-        num_down = false;
       }
     }      
   },
